@@ -1704,41 +1704,41 @@ export default function PaymentList() {
     <div className="px-4 sm:px-6 lg:px-8 pt-4 ml-10 lg:ml-72 w-auto">
       {!isFormVisible ? (
         <div className="mt-6 bg-white p-6 rounded-lg shadow-md">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-xl font-semibold">Payments</h2>
-            <div className="flex items-center space-x-4">
-              <div className="relative flex flex-col w-[20rem]">
-                <label htmlFor="searchName" className="text-sm font-medium"></label>
-                <input
-                  id="searchName"
-                  type="text"
-                  placeholder="Search by Customer Name"
-                  value={searchName}
-                  onChange={(e) => setSearchName(e.target.value)}
-                  className="mt-1 p-2 pr-10 border border-gray-300 rounded-md"
-                />
-                <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                  <SearchIcon />
-                </div>
-              </div>
-              <button
-                type="button"
-                className="inline-flex items-center gap-x-1 rounded-md bg-custom-darkblue px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-custom-lightblue hover:text-gray-700"
-                onClick={handleAddPaymentClick}
-              >
-                <FaPlus aria-hidden="true" className="-ml-0.5 h-4 w-4" />
-                Add Payment
-              </button>
-              <button
-                type="button"
-                className="inline-flex items-center gap-x-1 rounded-md bg-custom-darkblue px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-custom-lightblue hover:text-gray-700"
-                onClick={handleExportPaymentsData}
-              >
-                <FaTable aria-hidden="true" className="-ml-0.5 h-4 w-4" />
-                Export Payments
-              </button>
-            </div>
-          </div>
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4">
+           <h2 className="text-xl font-semibold mb-2 sm:mb-0">Payments</h2>
+         <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4">
+      <div className="relative flex flex-col w-full sm:w-[20rem] mb-2 sm:mb-0">
+      <label htmlFor="searchName" className="text-sm font-medium"></label>
+      <input
+        id="searchName"
+        type="text"
+        placeholder="Search by Customer Name"
+        value={searchName}
+        onChange={(e) => setSearchName(e.target.value)}
+        className="mt-1 p-2 pr-10 border border-gray-300 rounded-md"
+      />
+      <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+        <SearchIcon />
+      </div>
+      </div>
+     <button
+      type="button"
+      className="inline-flex items-center gap-x-1 rounded-md bg-custom-darkblue px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-custom-lightblue hover:text-gray-700 mb-2 sm:mb-0"
+      onClick={handleAddPaymentClick}
+      >
+      <FaPlus aria-hidden="true" className="-ml-0.5 h-4 w-4" />
+      Add Payment
+      </button>
+       <button
+      type="button"
+      className="inline-flex items-center gap-x-1 rounded-md bg-custom-darkblue px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-custom-lightblue hover:text-gray-700"
+      onClick={handleExportPaymentsData}
+      >
+      <FaTable aria-hidden="true" className="-ml-0.5 h-4 w-4" />
+      Export Payments
+    </button>
+  </div>
+</div>
 
           <TableContainer component={Paper} className="mt-4">
             <Table>

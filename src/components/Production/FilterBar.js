@@ -1,94 +1,196 @@
 
 import React from 'react';
 import { FaList, FaTruck,FaTasks, FaBan,FaSpinner,FaCheckCircle, FaBroom} from 'react-icons/fa';
+import Button from '@mui/material/Button';
 const FilterBar = ({ selectedFilter, onFilterChange }) => {
   return (
-    <div className="flex space-x-4 p-4 bg-gray-100 rounded-md">
-      <button
-        className={`inline-flex items-center gap-x-1.5 px-4 py-2 text-sm font-semibold rounded-md ${
-          selectedFilter === 'All'
-            ? 'bg-custom-darkblue text-white hover:bg-custom-lightblue hover:text-gray-700'
-            : 'bg-white text-gray-700 hover:bg-custom-lightblue hover:text-gray-700'
-        }`}
-        onClick={() => onFilterChange('All')}
-      >
-        <FaList/>
-        All
-      </button>
-      <button
-  className={`inline-flex items-center gap-x-1.5 px-4 py-2 text-sm font-semibold rounded-md ${
-    selectedFilter === 'Workstarted'
-      ? 'bg-custom-darkblue text-white hover:bg-custom-lightblue hover:text-gray-700'
-      : 'bg-white text-gray-700 hover:bg-custom-lightblue hover:text-gray-700'
-  }`}
-  onClick={() => onFilterChange('Workstarted')}
->
-  <FaTasks /> {/* Use the new icon */}
-  Workstarted
-</button>
-    <div className="flex gap-4"> {/* Optional: Add a container with gap for spacing between buttons */}
-      {/* Button for Ready to Dispatch */}
-      <button
-        className={`inline-flex items-center gap-x-1.5 px-4 py-2 text-sm font-semibold rounded-md ${
-          selectedFilter === 'DispatchDate'
-            ? 'bg-custom-darkblue text-white hover:bg-custom-lightblue hover:text-gray-700'
-            : 'bg-white text-gray-700 hover:bg-custom-lightblue hover:text-gray-700'
-        }`}
-        onClick={() => onFilterChange('DispatchDate')}
-      >
-        <FaTruck /> {/* Icon for Ready to Dispatch */}
-        Ready to Dispatch
-      </button>
-
-      {/* Button for Payment Done */}
-      <button
-        className={`inline-flex items-center gap-x-1.5 px-4 py-2 text-sm font-semibold rounded-md ${
-          selectedFilter === 'PaymentDone'
-            ? 'bg-custom-darkblue text-white hover:bg-custom-lightblue hover:text-gray-700'
-            : 'bg-white text-gray-700 hover:bg-custom-lightblue hover:text-gray-700'
-        }`}
-        onClick={() => onFilterChange('PaymentDone')}
-      >
-        <FaCheckCircle /> {/* Icon for Payment Done */}
-        Payment Done
-      </button>
-
-      {/* Button for Site Clearance */}
-      <button
-        className={`inline-flex items-center gap-x-1.5 px-4 py-2 text-sm font-semibold rounded-md ${
-          selectedFilter === 'SiteClearance'
-            ? 'bg-custom-darkblue text-white hover:bg-custom-lightblue hover:text-gray-700'
-            : 'bg-white text-gray-700 hover:bg-custom-lightblue hover:text-gray-700'
-        }`}
-        onClick={() => onFilterChange('SiteClearance')}
-      >
-        <FaBroom /> {/* Icon for Site Clearance */}
-        Site Clearance
-      </button>
-    <button
-        className={`inline-flex items-center gap-x-1.5 px-4 py-2 text-sm font-semibold rounded-md ${
-          selectedFilter === 'Dispatched'
-       ? 'bg-custom-darkblue text-white hover:bg-custom-lightblue hover:text-gray-700'
-            : 'bg-white text-gray-700 hover:bg-custom-lightblue hover:text-gray-700'
-        }`}
-        onClick={() => onFilterChange('Dispatched')}
-      >
-        <FaTruck/>
-        Dispatched
-      </button>
-      <button
-        className={`inline-flex items-center gap-x-1.5 px-4 py-2 text-sm font-semibold rounded-md ${
-          selectedFilter === 'Canceled'
-        ? 'bg-custom-darkblue text-white hover:bg-custom-lightblue hover:text-gray-700'
-            : 'bg-white text-gray-700 hover:bg-custom-lightblue hover:text-gray-700'
-        }`}
-        onClick={() => onFilterChange('Canceled')}
-      >
-        <FaBan/>
-        Cancelled
-      </button>
-    </div>
-    </div>
+//     <div className="flex flex-wrap justify-center space-x-2 space-y-2 sm:space-y-0">
+//   <Button
+//     variant="contained"
+//     startIcon={<FaList />}
+//     className="w-full sm:w-32"
+//     style={{
+//       backgroundColor: selectedFilter === "All" ? '#003375' : '#d1d5db',
+//       color: selectedFilter === "All" ? 'white' : '#1f2937',
+//       borderRadius: '0.375rem',
+//     }}
+//     onClick={() => onFilterChange("All")}
+//   >
+//     All
+//   </Button>
+//   <Button
+//     variant="contained"
+//     startIcon={<FaTasks />}
+//     className="w-full sm:w-32"
+//     style={{
+//       backgroundColor: selectedFilter === "Workstarted" ? '#003375' : '#d1d5db',
+//       color: selectedFilter === "Workstarted" ? 'white' : '#1f2937',
+//       borderRadius: '0.375rem',
+//     }}
+//     onClick={() => onFilterChange("Workstarted")}
+//   >
+//     Work started
+//   </Button>
+//   <Button
+//     variant="contained"
+//     startIcon={<FaTruck />}
+//     className="w-full sm:w-32"
+//     style={{
+//       backgroundColor: selectedFilter === "Ready to Dispatch" ? '#003375' : '#d1d5db',
+//       color: selectedFilter === "Ready to Dispatch" ? 'white' : '#1f2937',
+//       borderRadius: '0.375rem',
+//     }}
+//     onClick={() => onFilterChange("Ready to Dispatch")}
+//   >
+//     Ready to Dispatch
+//   </Button>
+//   <Button
+//     variant="contained"
+//     startIcon={<FaCheckCircle />}
+//     className="w-full sm:w-32"
+//     style={{
+//       backgroundColor: selectedFilter === "PaymentDone" ? '#003375' : '#d1d5db',
+//       color: selectedFilter === "PaymentDone" ? 'white' : '#1f2937',
+//       borderRadius: '0.375rem',
+//     }}
+//     onClick={() => onFilterChange("PaymentDone")}
+//   >
+//     Payment Done
+//   </Button>
+//   <Button
+//     variant="contained"
+//     startIcon={<FaTruck />}
+//     className="w-full sm:w-32"
+//     style={{
+//       backgroundColor: selectedFilter === "Dispatched" ? '#003375' : '#d1d5db',
+//       color: selectedFilter === "Dispatched" ? 'white' : '#1f2937',
+//       borderRadius: '0.375rem',
+//     }}
+//     onClick={() => onFilterChange("Dispatched")}
+//   >
+//     Dispatched
+//   </Button>
+//   <Button
+//     variant="contained"
+//     startIcon={<FaBroom />}
+//     className="w-full sm:w-32"
+//     style={{
+//       backgroundColor: selectedFilter === "Site Clearance" ? '#003375' : '#d1d5db',
+//       color: selectedFilter === "Site Clearance" ? 'white' : '#1f2937',
+//       borderRadius: '0.375rem',
+//     }}
+//     onClick={() => onFilterChange("Site Clearance")}
+//   >
+//     Site Clearance
+//   </Button>
+//   <Button
+//     variant="contained"
+//     startIcon={<FaBan />}
+//     className="w-full sm:w-32"
+//     style={{
+//       backgroundColor: selectedFilter === "Canceled" ? '#003375' : '#d1d5db',
+//       color: selectedFilter === "Canceled" ? 'white' : '#1f2937',
+//       borderRadius: '0.375rem',
+//     }}
+//     onClick={() => onFilterChange("Canceled")}
+//   >
+//     Canceled
+//   </Button>
+// </div>
+<div className="flex flex-wrap justify-center gap-2">
+  <Button
+    variant="contained"
+    startIcon={<FaList />}
+    className="w-full sm:w-32"
+    style={{
+      backgroundColor: selectedFilter === "All" ? '#003375' : '#d1d5db',
+      color: selectedFilter === "All" ? 'white' : '#1f2937',
+      borderRadius: '0.375rem',
+    }}
+    onClick={() => onFilterChange("All")}
+  >
+    All
+  </Button>
+  <Button
+    variant="contained"
+    startIcon={<FaTasks />}
+    className="w-full sm:w-32"
+    style={{
+      backgroundColor: selectedFilter === "Workstarted" ? '#003375' : '#d1d5db',
+      color: selectedFilter === "Workstarted" ? 'white' : '#1f2937',
+      borderRadius: '0.375rem',
+    }}
+    onClick={() => onFilterChange("Workstarted")}
+  >
+    Work started
+  </Button>
+  <Button
+    variant="contained"
+    startIcon={<FaTruck />}
+    className="w-full sm:w-32"
+    style={{
+      backgroundColor: selectedFilter === "Ready to Dispatch" ? '#003375' : '#d1d5db',
+      color: selectedFilter === "Ready to Dispatch" ? 'white' : '#1f2937',
+      borderRadius: '0.375rem',
+    }}
+    onClick={() => onFilterChange("Ready to Dispatch")}
+  >
+    Ready to Dispatch
+  </Button>
+  <Button
+    variant="contained"
+    startIcon={<FaCheckCircle />}
+    className="w-full sm:w-32"
+    style={{
+      backgroundColor: selectedFilter === "PaymentDone" ? '#003375' : '#d1d5db',
+      color: selectedFilter === "PaymentDone" ? 'white' : '#1f2937',
+      borderRadius: '0.375rem',
+    }}
+    onClick={() => onFilterChange("PaymentDone")}
+  >
+    Payment Done
+  </Button>
+  <Button
+    variant="contained"
+    startIcon={<FaTruck />}
+    className="w-full sm:w-32"
+    style={{
+      backgroundColor: selectedFilter === "Dispatched" ? '#003375' : '#d1d5db',
+      color: selectedFilter === "Dispatched" ? 'white' : '#1f2937',
+      borderRadius: '0.375rem',
+    }}
+    onClick={() => onFilterChange("Dispatched")}
+  >
+    Dispatched
+  </Button>
+  <Button
+    variant="contained"
+    startIcon={<FaBroom />}
+    className="w-full sm:w-32"
+    style={{
+      backgroundColor: selectedFilter === "Site Clearance" ? '#003375' : '#d1d5db',
+      color: selectedFilter === "Site Clearance" ? 'white' : '#1f2937',
+      borderRadius: '0.375rem',
+    }}
+    onClick={() => onFilterChange("Site Clearance")}
+  >
+    Site Clearance
+  </Button>
+  <Button
+    variant="contained"
+    startIcon={<FaBan />}
+    className="w-full sm:w-32"
+    style={{
+      backgroundColor: selectedFilter === "Canceled" ? '#003375' : '#d1d5db',
+      color: selectedFilter === "Canceled" ? 'white' : '#1f2937',
+      borderRadius: '0.375rem',
+    }}
+    onClick={() => onFilterChange("Canceled")}
+  >
+    Canceled
+  </Button>
+</div>
+  
   );
 };
 

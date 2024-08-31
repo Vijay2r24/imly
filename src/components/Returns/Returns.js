@@ -106,41 +106,94 @@ export default function Payments() {
         <TableContainer component={Paper} className="bg-white rounded-lg shadow-md">
           <Table>
             <TableHead>
-              <TableRow>
-                <TableCell style={{ backgroundColor: '#003375', color: 'white', fontWeight: 'bold' }}>Order Id</TableCell>
-                <TableCell style={{ backgroundColor: '#003375', color: 'white', fontWeight: 'bold' }}>Customer Name</TableCell>
-                <TableCell style={{ backgroundColor: '#003375', color: 'white', fontWeight: 'bold' }}>Amount</TableCell>
-                <TableCell style={{ backgroundColor: '#003375', color: 'white', fontWeight: 'bold' }}>Dispatched Date</TableCell>
-                <TableCell style={{ backgroundColor: '#003375', color: 'white', fontWeight: 'bold' }}>Status</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {filteredPayments
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((item, index) => (
-                  <TableRow
-                    key={index}
-                    className={`hover:bg-gray-100 ${index % 2 === 0 ? 'bg-gray-50' : ''}`}
-                  >
-                    <TableCell>{item.orderNumber}</TableCell>
-                    <TableCell>{item.customerName}</TableCell>
-                    <TableCell>{item.amount}</TableCell>
-                    <TableCell>{item.dispatchedDate}</TableCell>
-                    <TableCell className="text-center">
-                      <span className={`inline-block px-2 py-1 text-xs font-semibold rounded-full
-                        ${item.status === "Return" ? 'bg-red-200 text-red-800' :
-                          item.status === "Replacement" ? 'bg-green-200 text-green-800' : ''}`}>
-                        {item.status}
-                      </span>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              {emptyRows > 0 && (
-                <TableRow style={{ height: 53 * emptyRows }}>
-                  <TableCell colSpan={5} />
-                </TableRow>
-              )}
-            </TableBody>
+  <TableRow>
+    <TableCell
+      style={{
+        backgroundColor: '#003375',
+        color: 'white',
+        fontWeight: 'bold',
+        textAlign: 'center', // Align text to center
+        padding: '8px', // Consistent padding
+      }}
+    >
+      Order Id
+    </TableCell>
+    <TableCell
+      style={{
+        backgroundColor: '#003375',
+        color: 'white',
+        fontWeight: 'bold',
+        textAlign: 'center', // Align text to center
+        padding: '8px', // Consistent padding
+      }}
+    >
+      Customer Name
+    </TableCell>
+    <TableCell
+      style={{
+        backgroundColor: '#003375',
+        color: 'white',
+        fontWeight: 'bold',
+        textAlign: 'center', // Align text to center
+        padding: '8px', // Consistent padding
+      }}
+    >
+      Amount
+    </TableCell>
+    <TableCell
+      style={{
+        backgroundColor: '#003375',
+        color: 'white',
+        fontWeight: 'bold',
+        textAlign: 'center', // Align text to center
+        padding: '8px', // Consistent padding
+      }}
+    >
+      Dispatched Date
+    </TableCell>
+    <TableCell
+      style={{
+        backgroundColor: '#003375',
+        color: 'white',
+        fontWeight: 'bold',
+        textAlign: 'center', // Align text to center
+        padding: '8px', // Consistent padding
+      }}
+    >
+      Status
+    </TableCell>
+  </TableRow>
+</TableHead>
+
+<TableBody>
+  {filteredPayments
+    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+    .map((item, index) => (
+      <TableRow
+        key={index}
+        className={`hover:bg-gray-100 ${index % 2 === 0 ? 'bg-gray-50' : ''}`}
+      >
+        <TableCell style={{ padding: '8px', textAlign: 'center' }}>{item.orderNumber}</TableCell>
+        <TableCell style={{ padding: '8px', textAlign: 'center' }}>{item.customerName}</TableCell>
+        <TableCell style={{ padding: '8px', textAlign: 'center' }}>{item.amount}</TableCell>
+        <TableCell style={{ padding: '8px', textAlign: 'center' }}>{item.dispatchedDate}</TableCell>
+        <TableCell style={{ padding: '8px', textAlign: 'center' }}>
+          <span className={`inline-flex items-center justify-center rounded-full w-32 h-8 text-xs font-semibold ring-1 ring-inset
+            ${item.status === "Return" ? 'bg-red-200 text-red-800' :
+             item.status === "Replacement" ? 'bg-green-200 text-green-800' : 'bg-gray-200 text-gray-800'}`}
+          >
+            {item.status}
+          </span>
+        </TableCell>
+      </TableRow>
+    ))}
+  {emptyRows > 0 && (
+    <TableRow style={{ height: 53 * emptyRows }}>
+      <TableCell colSpan={5} />
+    </TableRow>
+  )}
+</TableBody>
+
             <TableFooter>
               <TableRow>
                 <TablePagination

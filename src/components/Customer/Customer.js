@@ -1692,14 +1692,6 @@ import { IoIosSearch } from "react-icons/io";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    // backgroundColor: theme.palette.common.black,
-    // color: theme.palette.common.white,
-  //   backgroundColor: theme.palette.action.hover,
-  //   color: theme.palette.common.black,
-  // },
-  // [`&.${tableCellClasses.body}`]: {
-  //   fontSize: 14,
-  // },
  
     backgroundColor: '#003375', // Dark blue color
     color: theme.palette.common.white,
@@ -2046,94 +2038,52 @@ const emptyRows =
       {/* Conditional Rendering */}
       {!isFormVisible ? (
         <div className="mt-6 bg-white p-6 rounded-lg shadow-md">
-          <div className="flex justify-between items-center">
-            <h2 className="text-xl font-semibold">Customers</h2>
-            <div className="flex items-center space-x-4">
-          <div className="relative flex flex-col w-[20rem] -ml-4">
-              <label htmlFor="searchName" className="text-sm font-medium"></label>
-              <input
-                id="searchName"
-                type="text"
-                placeholder="Search by Name or Email or Mobile"
-                value={searchName}
-                onChange={(e) => setSearchName(e.target.value)}
-                className="mt-1 p-2 pr-10 border border-gray-300 rounded-md"
-              />
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-              <IoIosSearch />
-              </div>
-            </div>
-            </div>
-            <ul className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none flex gap-2 list-none">
-              <li>
-                <button
-                  type="button"
-                  className="inline-flex items-center gap-x-1.5 rounded-md bg-custom-darkblue px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-custom-lightblue hover:text-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
-                  onClick={handleAddUserClick}
-                >
-                  <FaPlus aria-hidden="true" className="-ml-0.5 h-4 w-4" />
-                  Add Customer
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  className="inline-flex items-center gap-x-1.5 rounded-md bg-custom-darkblue px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-custom-lightblue hover:text-gray-700"
-                  onClick={handleExportUsersData}
-                >
-                  <FaTable aria-hidden="true" className="-ml-0.5 h-4 w-4" />
-                  Export Customer
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          <div className="mt-4">
-            {/* <div className="flex items-center space-x-8">
-      <div className="flex flex-col w-[35rem]">
-        <label
-          htmlFor="searchName"
-          className="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Search Customer Name
-        </label>
-        <input
-          id="searchName"
-          type="text"
-          placeholder="Search by name"
-          value={searchName}
-          onChange={(e) => setSearchName(e.target.value)}
-          className="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-        />
+         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center space-y-4 sm:space-y-0">
+  <h2 className="text-xl font-semibold">Customers</h2>
+  
+  <div className="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
+    <div className="relative flex w-full sm:w-[20rem]">
+      <label htmlFor="searchName" className="sr-only">Search</label>
+      <input
+        id="searchName"
+        type="text"
+        placeholder="Search by Name or Email or Mobile"
+        value={searchName}
+        onChange={(e) => setSearchName(e.target.value)}
+        className="w-full p-2 pr-10 border border-gray-300 rounded-md"
+      />
+      <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+        <IoIosSearch />
       </div>
-      <div className="flex flex-col w-[25rem]">
-        <label
-          htmlFor="searchEmail"
-          className="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Search by Email
-        </label>
-        <input
-          id="searchEmail"
-          type="text"
-          placeholder="Search by email"
-          value={searchEmail}
-          onChange={(e) => setSearchEmail(e.target.value)}
-          className="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-        />
-      </div>
-      <div className="flex-shrink-0">
+    </div>
+    
+    <ul className="flex flex-col sm:flex-row gap-2 list-none w-full sm:w-[20rem]">
+      <li className="w-full">
         <button
           type="button"
-          className="px-6 py-3 flex items-center space-x-2 rounded-md bg-indigo-600 text-white text-sm font-medium"
-          onClick={handleSearch}
+          className="w-full inline-flex items-center gap-x-1.5 rounded-md bg-custom-darkblue px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-custom-lightblue hover:text-gray-700 focus:outline-none"
+          onClick={handleAddUserClick}
         >
-          <FaFilter className="h-3 w-3" />
-          <span>Filter</span>
+          <FaPlus aria-hidden="true" className="h-4 w-4" />
+          Add Customer
         </button>
-      </div>
-    </div> */}
+      </li>
+      <li className="w-full">
+        <button
+          type="button"
+          className="w-full inline-flex items-center gap-x-1.5 rounded-md bg-custom-darkblue px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-custom-lightblue hover:text-gray-700 focus:outline-none"
+          onClick={handleExportUsersData}
+        >
+          <FaTable aria-hidden="true" className="h-4 w-4" />
+          Export Customer
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
 
+
+          <div className="mt-4">
            
           </div>
           <TableContainer component={Paper} className="mt-4">
@@ -2183,62 +2133,26 @@ const emptyRows =
                         >
                           {person.gender}
                         </span>
-                      {/* <span
-                        className={`inline-block w-20 px-3 py-2 text-xs font-semibold text-center rounded-full ${
-                          person.gender === "Male"
-                            ? "bg-green-100 text-green-800 shadow-md"
-                            : person.gender === "Female"
-                            ? "bg-pink-100 text-pink-800 shadow-md"
-                            : "bg-gray-100 text-gray-800 shadow-md"
-                        }`}
-                      >
-                        {person.gender}
-                      </span> */}
                     </StyledTableCell>
-                    {/* <StyledTableCell>
-                    
-                     
-    <div
-      className="inline-flex items-center justify-center w-14 h-7 cursor-pointer rounded-lg bg-blue-100 text-blue-800 shadow-md"
-      onClick={() => handleEditClick(index)}
-    >
-      <FaEdit className="w-4 h-4" />
-    </div>
-    
+                    <StyledTableCell className="flex flex-col sm:flex-row gap-2">
+  <button
+    type="button"
+    onClick={() => handleEditClick(index)}
+    className="inline-flex items-center gap-x-1 rounded-md bg-blue-600 px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-blue-500 w-full sm:w-auto"
+  >
+    <AiOutlineEdit aria-hidden="true" className="h-4 w-4" />
+    Edit
+  </button>
+  <button
+    type="button"
+    onClick={() => handleDeleteClick(index)}
+    className="inline-flex items-center gap-x-1 rounded-md bg-red-600 px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-red-500 w-full sm:w-auto mt-2 sm:mt-0"
+  >
+    <AiOutlineDelete aria-hidden="true" className="h-4 w-4" />
+    Delete
+  </button>
+</StyledTableCell>
 
-                    </StyledTableCell>
-                    <StyledTableCell>
-                    
-                        <div
-      className="inline-flex items-center justify-center w-14 h-7 cursor-pointer rounded-lg bg-pink-100 text-red-500 shadow-md"
-      onClick={() => handleDeleteClick(index)}
-    >
-      <FaTrash className="w-4 h-4" />
-    </div>
-  
-                      
-                    </StyledTableCell> */}
-                    <StyledTableCell>
-                      <button
-                        type="button"
-                        onClick={() => handleEditClick(index)}
-                        className="inline-flex items-center gap-x-1 rounded-md bg-blue-600 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-blue-500"
-                      >
-                        <AiOutlineEdit aria-hidden="true" className="h-4 w-4" />
-                        Edit
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => handleDeleteClick(index)}
-                        className="inline-flex items-center gap-x-1 ml-2 rounded-md bg-red-600 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-red-500"
-                      >
-                        <AiOutlineDelete
-                          aria-hidden="true"
-                          className="h-4 w-4"
-                        />
-                        Delete
-                      </button>
-                    </StyledTableCell>
                   </StyledTableRow>
                 ))}
                 {emptyRows > 0 && (
@@ -2248,23 +2162,6 @@ const emptyRows =
                 )}
               </TableBody>
               <TableFooter>
-                {/* <TableRow>
-                  <TablePagination
-                    rowsPerPageOptions={[
-                      5,
-                      10,
-                      25,
-                      { label: "All", value: -1 },
-                    ]}
-                    colSpan={3}
-                    count={people.length}
-                    rowsPerPage={rowsPerPage}
-                    page={page}
-                    onPageChange={handleChangePage}
-                    onRowsPerPageChange={handleChangeRowsPerPage}
-                    // ActionsComponent={TablePaginationActions}
-                  />
-                </TableRow> */}
                   <TableRow>
                     <TablePagination
                       rowsPerPageOptions={[5, 10, 25]}
@@ -2459,49 +2356,6 @@ const emptyRows =
                   className="mt-1 block w-full rounded-md border border-gray-400 shadow-sm py-2 px-4 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 />
               </div>
-
-             
-              {/* Role ID */}
-              {/* <div>
-  <label htmlFor="roleId" className="block text-sm font-medium text-gray-700">
-    Role ID
-  </label>
-  <select
-    name="roleId"
-    value={formData?.roleId || ""}
-    onChange={handleFormChange}
-    required
-    className="mt-1 block w-full rounded-md border border-gray-400 shadow-sm py-2 px-4 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-  >
-    <option value="" disabled>Select a role</option>
-    <option value="admin">Admin</option>
-    <option value="store user">Store User</option>
-    <option value="finance">Finance</option>
-    <option value="production">Production</option>
-    <option value="technical">Technical</option>
-  </select>
-</div> */}
-
-              {/* Profile Image */}
-              {/* <div>
-      <label htmlFor="profileImg" className="block text-sm font-medium text-gray-700">
-        Profile Image
-      </label>
-      <input
-        type="file"
-        accept="image/*"
-        onChange={handleImageChange}
-        className="mt-1 block w-full text-sm text-gray-500"
-      />
-      {formData?.profileImg && (
-        <img
-          src={formData.profileImg}
-          alt="Profile"
-          className="mt-2 w-24 h-24 object-cover rounded-md"
-        />
-      )}
-    </div> */}
-              {/* Comments */}
               <div>
                 <label htmlFor="gender" className="block text-sm font-medium">
                   Gender

@@ -2376,48 +2376,50 @@ const handleSearch = () => {
     <div className="px-4 sm:px-6 lg:px-8 pt-4 ml-10 lg:ml-72 w-auto">
       {!isFormVisible ? (
         <div className="mt-6 bg-white p-6 rounded-lg shadow-md">
-          <div className="flex justify-between items-center">
-            <h2 className="text-xl font-semibold">Users</h2>
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center space-y-4 sm:space-y-0">
+  <h2 className="text-xl font-semibold">Users</h2>
 
-            <div className="flex items-center space-x-4">
-          <div className="relative flex flex-col w-[20rem] -ml-4">
-              <label htmlFor="searchName" className="text-sm font-medium"></label>
-              <input
-                id="searchName"
-                type="text"
-                placeholder="Search by Name or Email or Mobile"
-                value={searchName}
-                onChange={(e) => setSearchName(e.target.value)}
-                className="mt-1 p-2 pr-10 border border-gray-300 rounded-md"
-              />
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-              <IoIosSearch />
-              </div>
-            </div>
-            </div>
-            <ul className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none flex gap-2 list-none">
-              <li>
-                <button
-                  type="button"
-                  className="inline-flex items-center gap-x-1.5 rounded-md bg-custom-darkblue px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-custom-lightblue hover:text-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
-                  onClick={handleAddUserClick}
-                >
-                  <FaPlus aria-hidden="true" className="-ml-0.5 h-4 w-4" />
-                  Add Users
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  className="inline-flex items-center gap-x-1.5 rounded-md bg-custom-darkblue px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-custom-lightblue hover:text-gray-700"
-                  onClick={handleExportUsersData}
-                >
-                  <FaTable aria-hidden="true" className="-ml-0.5 h-4 w-4" />
-                  Export Users
-                </button>
-              </li>
-            </ul>
-          </div>
+  <div className="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
+    <div className="relative flex w-full sm:w-[20rem]">
+      <label htmlFor="searchName" className="sr-only">Search</label>
+      <input
+        id="searchName"
+        type="text"
+        placeholder="Search by Name or Email or Mobile"
+        value={searchName}
+        onChange={(e) => setSearchName(e.target.value)}
+        className="w-full p-2 pr-10 border border-gray-300 rounded-md"
+      />
+      <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+        <IoIosSearch />
+      </div>
+    </div>
+    
+    <ul className="flex flex-col sm:flex-row gap-2 list-none w-full sm:w-[20rem]">
+      <li className="w-full">
+        <button
+          type="button"
+          className="w-full inline-flex items-center gap-x-1.5 rounded-md bg-custom-darkblue px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-custom-lightblue hover:text-gray-700 focus:outline-none"
+          onClick={handleAddUserClick}
+        >
+          <FaPlus aria-hidden="true" className="h-4 w-4" />
+          Add Users
+        </button>
+      </li>
+      <li className="w-full">
+        <button
+          type="button"
+          className="w-full inline-flex items-center gap-x-1.5 rounded-md bg-custom-darkblue px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-custom-lightblue hover:text-gray-700 focus:outline-none"
+          onClick={handleExportUsersData}
+        >
+          <FaTable aria-hidden="true" className="h-4 w-4" />
+          Export Users
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
+
 
   
 
@@ -2510,24 +2512,25 @@ const handleSearch = () => {
                         </button>
 </StyledTableCell> */}
 
-<StyledTableCell>
-                        <button
-                          type="button"
-                          onClick={() => handleEditClick(index)}
-                          className="inline-flex items-center gap-x-1 rounded-md bg-blue-600 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-blue-500"
-                        >
-                          <AiOutlineEdit aria-hidden="true" className="h-4 w-4" />
-                          Edit
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => handleDeleteClick(index)}
-                          className="inline-flex items-center gap-x-1 ml-2 rounded-md bg-red-600 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-red-500"
-                        >
-                          <AiOutlineDelete aria-hidden="true" className="h-4 w-4" />
-                          Delete
-                        </button>
-                      </StyledTableCell>
+<StyledTableCell className="flex flex-col sm:flex-row sm:items-center gap-y-2 sm:gap-x-2">
+  <button
+    type="button"
+    onClick={() => handleEditClick(index)}
+    className="inline-flex items-center gap-x-1 rounded-md bg-blue-600 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-blue-500 w-full sm:w-auto"
+  >
+    <AiOutlineEdit aria-hidden="true" className="h-4 w-4" />
+    Edit
+  </button>
+  <button
+    type="button"
+    onClick={() => handleDeleteClick(index)}
+    className="inline-flex items-center gap-x-1 rounded-md bg-red-600 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-red-500 w-full sm:w-auto mt-2 sm:mt-0"
+  >
+    <AiOutlineDelete aria-hidden="true" className="h-4 w-4" />
+    Delete
+  </button>
+</StyledTableCell>
+
                     </StyledTableRow>
                   ))}
                   {emptyRows > 0 && (
